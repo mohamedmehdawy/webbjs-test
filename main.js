@@ -4,7 +4,7 @@ const express = require('express'); // Import express
 const bodyParser = require('body-parser'); // For parsing JSON data
 
 const app = express(); // Initialize express
-const port = 8000; // Define the port
+const port = 8574; // Define the port
 
 // Middleware to parse JSON data
 app.use(bodyParser.json());
