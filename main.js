@@ -15,13 +15,17 @@ app.use(bodyParser.json());
 const client = new Client({
     authStrategy: new LocalAuth(), // Automatically saves session data locally
     puppeteer: {
-        // puppeteer args here
-    },
+        args: [
+            '--no-sandbox',
+            '--disable-setuid-sandbox'
+        ],
+        authStrategy: // what ever authStrategy you are using
+    }
     // locking the wweb version
-    webVersionCache: {
-        type: 'remote',
-        remotePath: `https://raw.githubusercontent.com/wppconnect-team/wa-version/main/html/${wwebVersion}.html`,
-    },
+    // webVersionCache: {
+    //     type: 'remote',
+    //     remotePath: `https://raw.githubusercontent.com/wppconnect-team/wa-version/main/html/${wwebVersion}.html`,
+    // },
 });
 
 // Generate QR code if no session exists
