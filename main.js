@@ -26,7 +26,7 @@ client.on('ready', () => {
 
 // Endpoint to send a message
 app.post('/send', (req, res) => {
-    const { number, message } = req.body;
+    const { number, message, otb } = req.body;
 
     // Check if number and message are provided
     if (!number || !message) {
@@ -34,7 +34,7 @@ app.post('/send', (req, res) => {
     }
 
     // Send the message to the specified number
-    client.sendMessage(`${number}@c.us`, message)
+    client.sendMessage(`${number}@c.us`, `${message}, والكود بتاعك: ${otb}`)
         .then(response => {
             res.status(200).json({ success: true, response });
         })
