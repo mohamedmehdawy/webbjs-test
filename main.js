@@ -19,7 +19,6 @@ const client = new Client({
             '--no-sandbox',
             '--disable-setuid-sandbox'
         ],
-        authStrategy: // what ever authStrategy you are using
     }
     // locking the wweb version
     // webVersionCache: {
