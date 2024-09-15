@@ -6,12 +6,22 @@ const bodyParser = require('body-parser'); // For parsing JSON data
 const app = express(); // Initialize express
 const port = 8574; // Define the port
 
+const wwebVersion = '2.2412.54';
+
 // Middleware to parse JSON data
 app.use(bodyParser.json());
 
 // Initialize WhatsApp client with local storage to save session
 const client = new Client({
-    authStrategy: new LocalAuth() // Automatically saves session data locally
+    authStrategy: new LocalAuth(), // Automatically saves session data locally
+    puppeteer: {
+        // puppeteer args here
+    },
+    // locking the wweb version
+    webVersionCache: {
+        type: 'remote',
+        remotePath: `https://raw.githubusercontent.com/wppconnect-team/wa-version/main/html/${wwebVersion}.html`,
+    },
 });
 
 // Generate QR code if no session exists
